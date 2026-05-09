@@ -1,0 +1,25 @@
+name: PR Governance
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened, synchronize, ready_for_review, labeled, unlabeled]
+
+jobs:
+  redmine-reference:
+    name: redmine-reference
+    uses: qinvent/github-governance/.github/workflows/pr-governance.yml@main
+    permissions:
+      pull-requests: write
+      issues: write
+    with:
+      check: redmine-reference
+
+  ai-pr-metadata:
+    name: ai-pr-metadata
+    uses: qinvent/github-governance/.github/workflows/pr-governance.yml@main
+    permissions:
+      pull-requests: write
+      issues: write
+    with:
+      check: ai-pr-metadata
+      enforcement-mode: enforce
